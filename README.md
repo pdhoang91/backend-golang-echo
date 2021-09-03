@@ -5,3 +5,6 @@ https://www.youtube.com/watch?v=6Dc0riyUYMQ&list=PLC4c48H3oDRw1827KV6GY8g887UC8u
 
 #Echo Framwork
 https://github.com/labstack/echo
+
+#go mod init test3
+#go mod tidy
