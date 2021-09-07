@@ -1,29 +1,23 @@
 package main
 
 import (
-	"net/http"
+	"test3/handler"
+	"test3/mdw"
 
 	"github.com/labstack/echo"
+	"github.com/labstack/echo/middleware"
 )
 
 func main() {
 	// Echo instance
-	e := echo.New()
+	sever := echo.New()
 
 	// Routes
-	e.GET("/", hello)
+	sever.GET("/", handler.Hello)
 
-	e.GET("/home", home)
+	// Routes
+	sever.POST("/login", handler.Login, middleware.BasicAuth(mdw.BasicAuth))
 
 	// Start server
-	e.Logger.Fatal(e.Start(":8080"))
-}
-
-// Handler
-func hello(c echo.Context) error {
-	return c.String(http.StatusOK, "Hello, World!")
-}
-
-func home(c echo.Context) error {
-	return c.String(http.StatusOK, "This is Home")
+	sever.Logger.Fatal(sever.Start(":8080"))
 }
