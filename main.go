@@ -1,8 +1,9 @@
 package main
 
 import (
-	"test3/handler"
-	"test3/mdw"
+	"back-end-echo/handler"
+	"back-end-echo/mdw"
+	"fmt"
 
 	"github.com/labstack/echo"
 	"github.com/labstack/echo/middleware"
@@ -14,6 +15,8 @@ func main() {
 
 	// Routes
 	sever.GET("/", handler.Hello)
+
+	fmt.Println("Test")
 
 	// Routes
 	sever.POST("/login", handler.Login, middleware.BasicAuth(mdw.BasicAuth))
